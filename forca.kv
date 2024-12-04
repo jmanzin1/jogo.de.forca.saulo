@@ -1,0 +1,49 @@
+BoxLayout:
+    orientation: 'vertical'
+    padding: 20
+    spacing: 10
+
+    MDLabel:
+        id: palavra_label
+        text: "_ _ _ _ _ _ _"
+        font_style: "H4"
+        halign: "center"
+        theme_text_color: "Primary"
+
+    MDLabel:
+        id: tentativas_label
+        text: "Tentativas restantes: 6"
+        halign: "center"
+        theme_text_color: "Secondary"
+
+    MDLabel:
+        id: letras_erradas_label
+        text: "Letras erradas: "
+        halign: "center"
+        theme_text_color: "Error"
+
+    MDLabel:
+        id: mensagem_label
+        text: ""
+        halign: "center"
+        theme_text_color: "Hint"
+
+    MDTextField:
+        id: letra_input
+        hint_text: "Digite uma letra"
+        mode: "rectangle"
+        size_hint_x: 0.8
+        pos_hint: {"center_x": 0.5}
+        on_text_validate: app.verificar_letra(self.text)
+    
+    MDRaisedButton:
+        text: "Verificar Letra"
+        pos_hint: {"center_x": 0.5}
+        on_release:
+            app.verificar_letra(letra_input.text)
+            letra_input.text = ""
+    
+    MDRaisedButton:
+        text: "Nova Palavra"
+        pos_hint: {"center_x": 0.5}
+        on_release: app.nova_palavra()
